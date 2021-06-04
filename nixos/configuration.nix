@@ -4,6 +4,7 @@
 
 { config, pkgs, ... }:
 
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -56,6 +57,18 @@
     alacritty
   ];
 
+  services.picom = {
+    enable = true;
+    activeOpacity = 1.0;
+    inactiveOpacity = 0.8;
+    backend = "xrender";
+    fade = true;
+    fadeDelta = 5;
+    shadow = true;
+    shadowOpacity = 0.75;
+    blur = true;
+    roundedCorners = true;
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us, ru";
@@ -93,6 +106,8 @@
     flameshot
     zoom-us
     jetbrains.pycharm-community
+    python38Packages.pywal
+    tldr
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -113,7 +128,9 @@
   users.extraUsers.kurkotoff = {
     shell = pkgs.zsh;
   };  
-
+ 
+ #Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
