@@ -12,7 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tmhedberg/SimpylFold'
-Plug 'nightsense/strawberry'
+Plug 'dylanaraps/wal.vim'
 
 call plug#end()
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -34,3 +34,6 @@ let g:jedi#completions_enabled = 0
 
 " open the go-to function in split, not another buffer
 let g:jedi#use_splits_not_buffers = "right"
+
+colorscheme wal
+set number
