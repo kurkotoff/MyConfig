@@ -1,0 +1,1 @@
+/home/kurkotoff/.cache/wal/colors.hs
