@@ -8,10 +8,9 @@
 }
 
 window#waybar {
-    /* background-color: rgba(43, 48, 59, 0.5); */
-    background-color: #0c0918;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #d2aabd;
+    background-color: transparent;
+    border-right: 3px solid rgba(238, 238, 238, 0.3);
+    color: #eeeeee;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -39,32 +38,32 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    margin-top: 4px;
+    margin-top: 10px;
     padding: 0 5px;
     background-color: transparent;
-    color: #d2aabd;
+    color: #eeeeee;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    box-shadow: inset 0 -3px #d2aabd;
+    box-shadow: inset 0 -3px #eeeeee;
 }
 
 #workspaces button.focused {
-    /* box-shadow: inset 0 -3px #d2aabd; */
+    /* box-shadow: inset 0 -3px #eeeeee; */
     /* box-shadow: 0 9px 0px 0px #f0f1f5, 0 -9px 0px 0px #f0f1f5, 12px 0 15px -4px rgba(0, 55, 162, 0.97), -12px 0 15px -4px rgba(0, 55, 162, 0.97); */
-    border-left: 2px solid #8c3752;
+    border-left: 2px solid #eeeeee;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    color: #eb4d4b;
 }
 
 #mode {
     background-color: #64727D;
-    border-bottom: 3px solid #d2aabd;
+    border-bottom: 3px solid #eeeeee;
 }
 
 #clock,
@@ -83,7 +82,7 @@ window#waybar.chromium {
 #mpd {
     padding: 0 10px;
     margin: 0 4px;
-    color: #d2aabd;
+    color: #eeeeee;
 }
 
 #window,
@@ -102,28 +101,28 @@ window#waybar.chromium {
 }
 
 #clock {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #battery {
-    color: #d2aabd;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    color: #eeeeee;
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #battery.charging, #battery.plugged {
-    color: #d2aabd;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    color: #eeeeee;
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 @keyframes blink {
     to {
-        background-color: #d2aabd;
-        color: #d2aabd;
+        background-color: #eeeeee;
+        color: #eeeeee;
     }
 }
 
 #battery.critical:not(.charging) {
-    color: #d2aabd;
+    color: #eeeeee;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -136,42 +135,42 @@ label:focus {
 }
 
 #cpu {
-    color: #d2aabd;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    color: #eeeeee;
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #memory {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #disk {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #backlight {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #network {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #network.disconnected {
 }
 
 #pulseaudio {
-    color: #d2aabd;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    color: #eeeeee;
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #pulseaudio.muted {
-    color: #d2aabd;
+    color: #eeeeee;
 }
 
 #custom-media {
     color: #2a5c45;
     min-width: 100px;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #custom-media.custom-spotify {
@@ -181,14 +180,14 @@ label:focus {
 }
 
 #temperature {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #temperature.critical {
 }
 
 #tray {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #tray > .passive {
@@ -200,7 +199,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #idle_inhibitor.activated {
@@ -222,11 +221,11 @@ label:focus {
 }
 
 #language {
-    color: #d2aabd;
+    color: #eeeeee;
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #keyboard-state {
@@ -234,7 +233,7 @@ label:focus {
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;
-    margin-top: 8px; border-left: 2px solid #d2aabd
+    margin-top: 8px; border-left: 2px solid #eeeeee
 }
 
 #keyboard-state > label {
