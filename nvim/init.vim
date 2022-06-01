@@ -1,39 +1,79 @@
-call plug#begin('~/.local/share/nvim/plugged')
+set clipboard+=unnamedplus
+set shiftwidth=4
+set softtabstop=4
+set relativenumber
+set number
+set mouse=a
 
-Plug 'davidhalter/jedi-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'sbdchd/neoformat'
-Plug 'davidhalter/jedi-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'machakann/vim-highlightedyank'
-Plug 'tmhedberg/SimpylFold'
-Plug 'dylanaraps/wal.vim'
+" Tab completion
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Moving lines up and down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Plugins
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'Mofiqul/vscode.nvim'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:deoplete#enable_at_startup = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-set splitbelow
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" Enable alignment
-let g:neoformat_basic_format_align = 1
 
-" Enable tab to space conversion
-let g:neoformat_basic_format_retab = 1
+" Coc settings
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
 
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-colorscheme wal
-set number
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+
+" NERDTREE config
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" NERDCommenter settings
+nmap <C-_>   <Plug>NERDCommenterToggle
+vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+
+" Vscode theme config
+set background=dark
+let g:vscode_transparency = 1
+let g:vscode_italic_comment = 1
+colorscheme vscode
